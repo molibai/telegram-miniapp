@@ -23,14 +23,15 @@ const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
 const Inner: FC = () => {
   const debug = useLaunchParams().startParam === 'debug';
   const manifestUrl = useMemo(() => {
-    return new URL('tonconnect-manifest.json', window.location.href).toString();
+    // return new URL('tonconnect-manifest.json', window.location.href).toString();
+    return 'https://ton-connect.github.io/demo-dapp-with-react-ui/tonconnect-manifest.json';
   }, []);
 
   // Enable debug mode to see all the methods sent and events received.
   useEffect(() => {
-    if (debug) {
+    // if (debug) {
       import('eruda').then((lib) => lib.default.init());
-    }
+    // }
   }, [debug]);
 
   return (

@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import './polyfills';
 
 import { Root } from '@/components/Root';
 

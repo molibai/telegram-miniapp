@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/reactjs-mini',
+  base: '/telegram-miniapp',
   plugins: [
     // Allows using React dev server along with building a React application with Vite.
     // https://npmjs.com/package/@vitejs/plugin-react-swc
@@ -16,6 +16,7 @@ export default defineConfig({
     // Allows using self-signed certificates to run the dev server using HTTPS.
     // https://www.npmjs.com/package/@vitejs/plugin-basic-ssl
     // basicSsl(),
+    
   ],
   publicDir: './public',
   server: {

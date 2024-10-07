@@ -67,6 +67,12 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
   const extHash = bocHashs.toString("hex");
   const base64Hash = bocHashs.toString("base64");
   console.log("boc结果 base64：", base64Hash,extHash);
+
+  /*start */
+  const addressinfo = await   tonweb.provider.getAddressInfo('UQA8vtbDbz68Uuz0hpA_GyrbbpskGu9GO54HoAHrZJy96QNL')
+  console.log("账号信息：",addressinfo)
+
+  /*end*/
   const transactionInfo = await tonweb.provider.getTransactions(
     "UQA8vtbDbz68Uuz0hpA_GyrbbpskGu9GO54HoAHrZJy96QNL",
     20,

@@ -15,6 +15,7 @@ import type { FC } from "react";
 import { DisplayData } from "@/components/DisplayData/DisplayData.tsx";
 import { TxForm } from "./TxForm";
 import { UsdtTxForm } from "./UsdtTxForm";
+// import { JettonUsdtForm } from "./JettonUsdtForm";
 
 import "./TONConnectPage.css";
 
@@ -99,6 +100,9 @@ export const TONConnectPage: FC = () => {
       <TxForm />
       <p style={{ padding: 10 }}>_______分割________</p>
       <UsdtTxForm />
+      <p style={{ padding: 10 }}>_______再分割________</p>
+      {/* <JettonUsdtForm /> */}
+
     </List>
   );
 };

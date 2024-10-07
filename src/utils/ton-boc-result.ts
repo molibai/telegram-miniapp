@@ -1,4 +1,11 @@
-import { Cell, Address, beginCell,loadMessage, storeMessage, TonClient } from "@ton/ton";
+import {
+  Cell,
+  Address,
+  beginCell,
+  loadMessage,
+  storeMessage,
+  TonClient,
+} from "@ton/ton";
 import TonWeb from "tonweb";
 import { handleBOC } from "./boc-analyze";
 
@@ -35,15 +42,15 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
   const myAddress = Address.parse(
     "UQA8vtbDbz68Uuz0hpA_GyrbbpskGu9GO54HoAHrZJy96QNL"
   ); // Address to fetch transactions from
-  const payExtHash = Cell.fromBase64(exBoc).hash().toString('hex');//支付完成返回的boc解析，与inMsg下的body比较
-  console.log(payExtHash,"payExtHash")
+  const payExtHash = Cell.fromBase64(exBoc).hash().toString("hex"); //支付完成返回的boc解析，与inMsg下的body比较
+  console.log(payExtHash, "payExtHash");
 
   const bocBytes = TonWeb.utils.base64ToBytes(exBoc);
-    const cell = TonWeb.boc.Cell.oneFromBoc(bocBytes);
-  
-    // 计算哈希
-    const calculatedHash = (await cell.hash());
-    // 开始解析
+  const cell = TonWeb.boc.Cell.oneFromBoc(bocBytes);
+
+  // 计算哈希
+  const calculatedHash = await cell.hash();
+  // 开始解析
   const base64Res = Cell.fromBase64(exBoc);
   const bocHashs = base64Res.hash();
   const _boss = base64Res.beginParse();
@@ -53,7 +60,7 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
   const _hash = Cell.fromBase64(exBoc).hash().toString("base64");
 
   const message = loadMessage(Cell.fromBase64(exBoc).asSlice());
-  console.log("重点 _boss:", _boss,);
+  console.log("重点 _boss:", _boss);
   console.log("重点 bocHash:", bocHash);
   console.log("重点 hash:", _hash);
   console.log("重点 message:", message);
@@ -66,11 +73,13 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
 
   const extHash = bocHashs.toString("hex");
   const base64Hash = bocHashs.toString("base64");
-  console.log("boc结果 base64：", base64Hash,extHash);
+  console.log("boc结果 base64：", base64Hash, extHash);
 
   /*start */
-  const addressinfo = await   tonweb.provider.getAddressInfo('UQA8vtbDbz68Uuz0hpA_GyrbbpskGu9GO54HoAHrZJy96QNL')
-  console.log("账号信息：",addressinfo)
+  const addressinfo = await tonweb.provider.getAddressInfo(
+    "UQA8vtbDbz68Uuz0hpA_GyrbbpskGu9GO54HoAHrZJy96QNL"
+  );
+  console.log("账号信息：", addressinfo);
 
   /*end*/
   const transactionInfo = await tonweb.provider.getTransactions(
@@ -78,6 +87,13 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
     20,
     undefined
   );
+  try {
+    const transactionInfo22 = await tonweb.provider.sendBoc(exBoc);
+    console.log("message222 message222", transactionInfo22);
+  } catch (error) {
+    console.error("message222 error:", error);
+  }
+
   console.log("001 transactionInfo 结果：", transactionInfo);
   //1. 使用 TonWeb.HttpProvider方式获取交易记录;已经是转换过的字符串；
   for (const tx of transactionInfo) {
@@ -100,7 +116,6 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
 
     console.log("原始收款地址:", originalAddress);
     console.log("原始发起转账地址:", originalInAddress);
-
   }
 
   return retry(
@@ -160,11 +175,9 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
   );
 }
 const bocstr =
-  "te6cckEBBAEAtQAB5YgASGJP94IfcUtuseHKZ1oYGshVjB/4PnQPO8Euqk58I84Dm0s7c///+Is30mFIAAAAFWrG7NsXeCP0W7V3Ox4zekSJnTUZBv0/E+N4TkXMIIfW933rTwOV6sDiTYRXRrmekl3fTB4AzwlmHDw3QpVr8hMBAgoOw8htAwIDAAAAZEIAHl9rYbefXil2ekNIH42VbbdNkg13ox3PA9AA9bJOXvSROIAAAAAAAAAAAAAAAAAAsfAFEw==";
-var txRes = getTxByBOC(bocstr);
+  "te6cckEBBAEAtQAB5YgASGJP94IfcUtuseHKZ1oYGshVjB/4PnQPO8Euqk58I84Dm0s7c///+Is30uJ4AAAAJeUkyZuTt7ukNRmV9uJ06+p1WA5PSgHcSFP6hTU99No4MGxVAG4RKtifwY+OzeXZNnuPhGQqk1c3S4NEB1Ul0A0BAgoOw8htAwIDAAAAZEIAHl9rYbefXil2ekNIH42VbbdNkg13ox3PA9AA9bJOXvSROIAAAAAAAAAAAAAAAAAAOl3Wpg==";
+const txRes = getTxByBOC(bocstr);
 txRes.then((res) => {
   console.log("txRes 结果：", res);
 });
 console.log("txRes 结果：000");
-
-

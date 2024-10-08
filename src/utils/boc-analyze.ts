@@ -12,7 +12,7 @@ console.log("TonWeb.boc.Cell.fromBoc(cell)",)
       // 使用 tonweb 的 cell 解析工具解析 BOC
       const cell1 = TonWeb.boc.Cell.fromBoc(cell)[0] as any;
       const slice = cell1.beginParse();
-    console.log("1. slice",slice)
+    console.log("1. slice",slice.toString('hex'))
       // 获取解析出来的部分交易数据（例如内部交易 ID、存储费用、转账金额等）
       const parsedTransaction = {
           transaction_id: slice.loadUint(64), // 假设为 64 位的交易 ID

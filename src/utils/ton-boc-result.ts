@@ -87,12 +87,6 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
     20,
     undefined
   );
-  try {
-    const transactionInfo22 = await tonweb.provider.sendBoc(exBoc);
-    console.log("message222 message222", transactionInfo22);
-  } catch (error) {
-    console.error("message222 error:", error);
-  }
 
   console.log("001 transactionInfo 结果：", transactionInfo);
   //1. 使用 TonWeb.HttpProvider方式获取交易记录;已经是转换过的字符串；
@@ -175,7 +169,7 @@ export async function getTxByBOC(exBoc: string): Promise<string> {
   );
 }
 const bocstr =
-  "te6cckEBBAEAtQAB5YgASGJP94IfcUtuseHKZ1oYGshVjB/4PnQPO8Euqk58I84Dm0s7c///+Is30uJ4AAAAJeUkyZuTt7ukNRmV9uJ06+p1WA5PSgHcSFP6hTU99No4MGxVAG4RKtifwY+OzeXZNnuPhGQqk1c3S4NEB1Ul0A0BAgoOw8htAwIDAAAAZEIAHl9rYbefXil2ekNIH42VbbdNkg13ox3PA9AA9bJOXvSROIAAAAAAAAAAAAAAAAAAOl3Wpg==";
+  "te6cckEBBAEA6gAB5YgAeX2tht59eKXZ6Q0gfjZVtt02SDXejHc8D0AD1sk5e9IDm0s7c///+Is4KHxYAAAADCRIHBdYD5eg+qbQY5VpUggblcZY1xZRWP0dvvzFj5vnPIXdLdGNzW+MIlT+kATvdfzKBvOJoBnOcpgJ9qGuChsBAgoOw8htAwIDAAAAzkIAWYDBkKE9wcF/4nU1tjLqdf+BHWOIS/pSf669mpN3DyoROIAAAAAAAAAAAAAAAAAAAAAAAHsicXVlcnlJZCI6MTcyODM4NDcwMjQwNCwiamV0dG9uQW1vdW50IjoiMTAwMDAwIn0r4HyX";
 const txRes = getTxByBOC(bocstr);
 txRes.then((res) => {
   console.log("txRes 结果：", res);

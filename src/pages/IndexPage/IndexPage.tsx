@@ -19,7 +19,7 @@ export const IndexPage: FC = () => {
             }
             subtitle="Connect your TON wallet"
           >
-            TON Connect1
+            TON Connect And Pay
           </Cell>
         </Link>
       </Section>
@@ -40,11 +40,6 @@ export const IndexPage: FC = () => {
         <Link to="/theme-params">
           <Cell subtitle="Telegram application palette information">
             Theme Parameters
-          </Cell>
-        </Link>
-        <Link to="/test-pay">
-          <Cell subtitle="测试支付页">
-            去支付页
           </Cell>
         </Link>
       </Section>

@@ -5,7 +5,8 @@ import { InitDataPage } from "@/pages/InitDataPage/InitDataPage";
 import { LaunchParamsPage } from "@/pages/LaunchParamsPage/LaunchParamsPage.tsx";
 import { ThemeParamsPage } from "@/pages/ThemeParamsPage/ThemeParamsPage.tsx";
 import { TONConnectPage } from "@/pages/TONConnectPage/TONConnectPage";
-import { PayPage } from "@/pages/PayTestPage/PayPage";
+import { TonPayPage } from "@/pages/PayTestPage/TxForm";
+import { UsdtPayPage } from "@/pages/PayTestPage/UsdtTxForm";
 
 interface Route {
   path: string;
@@ -23,7 +24,8 @@ export const routes: Route[] = [
     Component: LaunchParamsPage,
     title: "Launch Params",
   },
-  { path: "/test-pay", Component: PayPage, title: "Pay 测试" },
+  { path: "/pay-ton", Component: TonPayPage, title: "Ton Pay 测试" },
+  { path: "/pay-usdt", Component: UsdtPayPage, title: "USDT Pay 测试" },
   {
     path: "/ton-connect",
     Component: TONConnectPage,

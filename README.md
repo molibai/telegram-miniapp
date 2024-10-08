@@ -166,7 +166,7 @@ And `vite.config.ts` should have this content:
 
 ```ts
 export default defineConfig({
-  base: '/is-awesome/',
+  base: "/is-awesome/",
   // ...
 });
 ```
@@ -231,3 +231,11 @@ project's information.
 - [Platform documentation](https://docs.telegram-mini-apps.com/)
 - [@telegram-apps/sdk-react documentation](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk-react)
 - [Telegram developers community chat](https://t.me/devs)
+
+## 交易 boc 记录：
+
+- 10-08 18:55
+  > "te6cckEBBAEA6gAB5YgAeX2tht59eKXZ6Q0gfjZVtt02SDXejHc8D0AD1sk5e9IDm0s7c///+Is4KHxYAAAADCRIHBdYD5eg+qbQY5VpUggblcZY1xZRWP0dvvzFj5vnPIXdLdGNzW+MIlT+kATvdfzKBvOJoBnOcpgJ9qGuChsBAgoOw8htAwIDAAAAzkIAWYDBkKE9wcF/4nU1tjLqdf+BHWOIS/pSf669mpN3DyoROIAAAAAAAAAAAAAAAAAAAAAAAHsicXVlcnlJZCI6MTcyODM4NDcwMjQwNCwiamV0dG9uQW1vdW50IjoiMTAwMDAwIn0r4HyX"
+  > payload:{"queryId":1728384702404,"jettonAmount":"100000"}
+  > messageHash: "GsxDHUX5F3xKbBUd8fnt49Lp4hlnMXBd/mRC38YiBXY="
+  "发送前的 payload":"te6ccsEBAQEANwAAAGoAAAAAeyJxdWVyeUlkIjoxNzI4Mzg0NzAyNDA0LCJqZXR0b25BbW91bnQiOiIxMDAwMDAifYwmNWY="

@@ -11,11 +11,9 @@ import {
   Title,
 } from "@telegram-apps/telegram-ui";
 import type { FC } from "react";
+import { Link } from "@/components/Link/Link.tsx";
 
 import { DisplayData } from "@/components/DisplayData/DisplayData.tsx";
-import { TxForm } from "./TxForm";
-import { UsdtTxForm } from "./UsdtTxForm";
-// import { JettonUsdtForm } from "./JettonUsdtForm";
 
 import "./TONConnectPage.css";
 
@@ -97,12 +95,14 @@ export const TONConnectPage: FC = () => {
           },
         ]}
       />
-      <TxForm />
-      <p style={{ padding: 10 }}>_______分割________</p>
-      <UsdtTxForm />
-      <p style={{ padding: 10 }}>_______再分割________</p>
-      {/* <JettonUsdtForm /> */}
-
+      <Section header="各场景支付测试">
+        <Link to="/pay-ton">
+          <Cell subtitle="链接钱包，并进行 ton 支付">Wakket TON Pay </Cell>
+        </Link>
+        <Link to="/pay-usdt">
+          <Cell subtitle="链接钱包，并进行usdt支付">Wakket USDT Pay </Cell>
+        </Link>
+      </Section>
     </List>
   );
 };

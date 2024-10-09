@@ -13,8 +13,14 @@ export function UsdtPayPage() {
 
   const wallet = useTonWallet();
 
-  const [tonConnectUi] = useTonConnectUI();
-
+  const [tonConnectUI] = useTonConnectUI();
+  useEffect(
+    () =>
+      tonConnectUI.onStatusChange((wallet) => {
+        console.log("链接状态：", wallet);
+      }),
+    []
+  );
   const usdtSendTransaction = async () => {
     //USDT payment
     if (!wallet) {
@@ -116,7 +122,7 @@ export function UsdtPayPage() {
     console.log(transaction, "支付前");
     setTx(transaction);
     try {
-      const result = await tonConnectUi.sendTransaction(transaction);
+      const result = await tonConnectUI.sendTransaction(transaction);
       console.log("result : ", result);
       setUsdtResult(result);
     } catch (e) {
@@ -137,7 +143,9 @@ export function UsdtPayPage() {
           usd 交易
         </button>
       ) : (
-        <button onClick={() => tonConnectUi.openSingleWalletModal("telegram-wallet")}>
+        <button
+          onClick={() => tonConnectUI.openSingleWalletModal("telegram-wallet")}
+        >
           Connect wallet to send the transaction
         </button>
       )}

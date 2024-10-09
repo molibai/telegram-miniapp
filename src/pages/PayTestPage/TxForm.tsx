@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import ReactJson, { InteractionProps } from "react-json-view";
 import { checkTransactionStatus } from "../../utils/tonweb-pay";
 import "../../utils/ton-boc-result";
@@ -47,7 +47,7 @@ export function TonPayPage() {
 
   const wallet = useTonWallet();
   const [bocRes, setUsdtResult] = useState({});
-  const [tonConnectUi] = useTonConnectUI();
+  const [tonConnectUI] = useTonConnectUI();
 
   const onChange = useCallback((value: InteractionProps) => {
     setTx(value.updated_src as SendTransactionRequest);
@@ -56,6 +56,13 @@ export function TonPayPage() {
     const res = await checkTransactionStatus("");
     console.log("测试结果：", res);
   };
+  useEffect(
+    () =>
+      tonConnectUI.onStatusChange((wallet) => {
+        console.log("链接状态：", wallet);
+      }),
+    []
+  );
   const sendTonTransaction = async () => {
     //USDT payment
     if (!wallet) {
@@ -91,7 +98,7 @@ export function TonPayPage() {
     console.log(transaction, "支付前");
     setTx(transaction);
     try {
-      const result = await tonConnectUi.sendTransaction(transaction);
+      const result = await tonConnectUI.sendTransaction(transaction);
       console.log("result : ", result);
       setUsdtResult(result);
     } catch (e) {
@@ -116,7 +123,7 @@ export function TonPayPage() {
         <button onClick={() => sendTonTransaction()}>ton 发送交易</button>
       ) : (
         <button
-          onClick={() => tonConnectUi.openSingleWalletModal("telegram-wallet")}
+          onClick={() => tonConnectUI.openSingleWalletModal("telegram-wallet")}
         >
           Connect wallet to send the transaction
         </button>

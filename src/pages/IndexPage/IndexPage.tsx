@@ -42,7 +42,7 @@ export const IndexPage: FC = () => {
             Theme Parameters
           </Cell>
         </Link>
-        <a href="https://t.me/TgTestMiniapp1005Bot">
+        <a href="https://t.me/TgTestMiniapp1005Bot?mode=compact">
           <Cell subtitle="Telegram application palette information">
             去Bot窗口支付
           </Cell>

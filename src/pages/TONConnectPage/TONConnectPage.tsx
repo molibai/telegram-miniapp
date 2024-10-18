@@ -102,6 +102,16 @@ export const TONConnectPage: FC = () => {
         <Link to="/pay-usdt">
           <Cell subtitle="链接钱包，并进行usdt支付">Wakket USDT Pay </Cell>
         </Link>
+        <Cell
+          onClick={() =>
+            utils.openTelegramLink(
+              "https://t.me/wallet?attach=wallet&mode=compact"
+            )
+          }
+          subtitle="sdk 拉起钱包"
+        >
+          打开 Wakket 钱包{" "}
+        </Cell>
       </Section>
     </List>
   );
